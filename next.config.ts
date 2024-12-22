@@ -1,7 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
+  output: "standalone",
+  productionBrowserSourceMaps: false,
+  publicRuntimeConfig: {
+    NEXT_PUBLIC_API_URL: process.env.API_URL,
+  },
+  images: {
+    domains: ["localhost"],
+  },
 };
 
 export default nextConfig;

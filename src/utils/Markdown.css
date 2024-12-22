@@ -1,0 +1,72 @@
+u {
+  color: #f4975d !important;
+  text-decoration: none !important;
+}
+
+em {
+  color: #000 !important;
+  text-decoration: none !important;
+  font-style: normal !important;
+}
+strong {
+  font-weight: bold !important;
+}
+del {
+  color: #00cb9d !important;
+  text-decoration: none !important;
+  display: inline !important;
+}
+blockquote {
+  text-decoration: none !important;
+  background-color: #00cb9d !important;
+  color: #fff !important;
+  display: inline-block !important;
+  padding: 3px 5px !important;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+pre code {
+  text-decoration: none !important;
+  background-color: #ed1c24 !important;
+  color: #fff !important;
+  text-emphasis: none !important;
+  text-wrap: none !important;
+  font-style: inherit !important;
+  font-weight: bold !important;
+  font-size: inherit !important;
+  /* font-family: inherit !important; */
+  width: fit-content !important;
+  padding: 3px 5px !important;
+  line-height: 40px !important;
+}
+
+pre {
+  margin-top: 10px !important;
+  margin-bottom: 5px !important;
+}
+
+/* code {
+  font-family: inherit !important;
+} */
+
+ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+ul ul,
+ol ul {
+  list-style-type: circle;
+  list-style-position: inside;
+  margin-left: 15px;
+}
+ol ol,
+ul ol {
+  list-style-type: lower-latin;
+  list-style-position: inside;
+  margin-left: 15px;
+}

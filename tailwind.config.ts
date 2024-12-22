@@ -5,12 +5,25 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "src/**/!(*.stories|*.spec|*.map).{ts,html,tsx}",
+    "./components/**/*.{html,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        blue: "#6688BD",
+        orange: "#F4975D",
+        lightBlue: "#9FC0E0",
+        lightOrange: "#F6B249",
+        gray: "#F3F4F6",
+        grayText: "#BCBCBD",
+      },
+      fontFamily: {
+        avBlack: ["Avenir-Black", "sans"],
+        avHeavy: ["Avenir-Heavy", "sans"],
+        avMedium: ["Avenir-Regular", "sans"],
+        avRoman: ["Avenir-Roman", "sans"],
       },
     },
   },
