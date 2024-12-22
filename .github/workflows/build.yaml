@@ -25,4 +25,4 @@ jobs:
           file: Dockerfile
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
+          tags: ghcr.io/abbassmonzer97/upskills-consulting:${{ github.sha }}
