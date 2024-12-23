@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function HeaderComponent(props: any) {
   const { headerResponse } = props;
-  const [isMobileMenuHidden, setIsMobileMenuHidden] = useState(false);
+  const [isMobileMenuHidden, setIsMobileMenuHidden] = useState(true);
   const [isFixed, setIsFixed] = useState(false);
   const [routes] = useState(headerResponse?.headerLinks);
   const [openMenuId, setOpenMenuId] = useState(null);
@@ -51,7 +51,7 @@ export default function HeaderComponent(props: any) {
   return (
     <>
       <header
-        className={`items-baseline md:flex md:flex-row flex-col justify-between items-center w-full z-[1000] transition-all duration-300 p-[50px] ${
+        className={`items-baseline md:flex md:flex-row flex-col justify-between items-center w-full z-[1000] transition-all duration-300 p-[50px] fixed top-0 ${
           isFixed ? "bg-lightBlue" : "bg-lightBlue"
         }`}
       >
@@ -99,7 +99,10 @@ export default function HeaderComponent(props: any) {
               <span key={route.id}>
                 <a
                   href={route.link}
-                  onClick={(e) => handleScroll(e, route?.link)}
+                  onClick={(e) => {
+                    handleScroll(e, route?.link);
+                    setIsMobileMenuHidden(true);
+                  }}
                   className="text-white hover:underline"
                 >
                   {language === "en" ? route?.enTitle : route?.frTitle}

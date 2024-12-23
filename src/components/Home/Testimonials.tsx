@@ -22,7 +22,7 @@ export default function Testimonials(props: any) {
             {language === "en" ? testimonials?.enTitle : testimonials?.frTitle}
           </Markdown>
         </h2>
-        <div className="space-x-6 md:flex hidden">
+        <div className="space-x-6 lg:flex hidden">
           {testimonials?.clientTestimonials.map((client: any, index: any) => (
             <div
               className={`${
@@ -33,11 +33,11 @@ export default function Testimonials(props: any) {
                   : index === 2
                   ? "bg-lightOrange"
                   : "bg-gray-300"
-              }  p-[10px] rounded-[3px] text-center flex-1`}
+              }  p-[10px] rounded-[3px] text-center flex-1 my-0`}
               key={client.id}
             >
-              <div className="border border-white p-[100px]">
-                <Markdown cls="programs-titles text-white">
+              <div className="border border-white p-[50px] h-[350px]">
+                <Markdown cls="programs-titles mb-16 text-white">
                   {language === "en" ? client?.enTitle : client?.frTitle}
                 </Markdown>
 
@@ -49,7 +49,7 @@ export default function Testimonials(props: any) {
           ))}
         </div>
 
-        <div className="md:hidden block">
+        <div className="lg:hidden block">
           <Swiper
             spaceBetween={1}
             slidesPerView={1}
@@ -83,8 +83,8 @@ export default function Testimonials(props: any) {
                   }  p-[10px] rounded-[3px] text-center flex-1`}
                   key={client.id}
                 >
-                  <div className="border border-white p-[100px]">
-                    <Markdown cls="programs-titles text-white">
+                  <div className="border border-white p-[50px] h-[350px]">
+                    <Markdown cls="programs-titles mb-16 text-white">
                       {language === "en" ? client?.enTitle : client?.frTitle}
                     </Markdown>
 

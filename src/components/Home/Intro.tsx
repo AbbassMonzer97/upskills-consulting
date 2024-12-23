@@ -55,17 +55,17 @@ export default function Intro(props: any) {
           )}
         </div>
         <div className="flex-1">
-          <h2 className="font-bold mb-4 text-center">
+          <h2 className="font-bold mb-6 text-center">
             <Markdown>
               {language === "en" ? intro?.enTitle : intro?.frTitle}
             </Markdown>
           </h2>
-          <div className="bdy-txt mb-6 text-center">
+          <div className="bdy-txt mb-16 text-center">
             <Markdown>
               {language === "en" ? intro.enText : intro.frText}
             </Markdown>
           </div>
-          <div className="flex-col items-center">
+          <div className="flex-col items-center text-center">
             <div className="bdy-txt-2 text-orange mb-4">
               {language === "en" ? intro.enSubTitle : intro.frSubTitle}
             </div>
@@ -88,7 +88,7 @@ export default function Intro(props: any) {
                 alt="Arrow"
                 width={30}
                 height={20}
-                className="absolute cursor-pointer top-[20%] md:left-[46%] right-[10px]"
+                className="absolute cursor-pointer top-[20%] md:right-[26%] right-[10px]"
                 onClick={(e) => {
                   handleEmailSubmit();
                   handleClearInput();

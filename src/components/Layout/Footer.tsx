@@ -167,10 +167,7 @@ export default function FooterComponent(props: any) {
           showPrivacy || showSuccess ? "overlay z-[1000]" : "hidden"
         }`}
       ></div>
-      <footer
-        className="bg-gray text-grayText py-6 text-center bdy-txt"
-        id="footer"
-      >
+      <footer className="bg-gray text-grayText py-6 text-center bdy-txt">
         <h2 className="font-bold text-center mb-6 text-black">
           <Markdown>
             {language === "en"
@@ -197,7 +194,7 @@ export default function FooterComponent(props: any) {
             </div>
           </section>
           <section
-            id="contact"
+            id="footer"
             className="md:py-16 pb-12 px-6 md:order-2 order-3"
           >
             <form
