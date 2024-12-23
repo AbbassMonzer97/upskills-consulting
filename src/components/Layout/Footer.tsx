@@ -10,7 +10,7 @@ import { postFooterForm } from "./footer.data";
 export default function FooterComponent(props: any) {
   const { footerResponse } = props;
   const [showPrivacy, setPrivacy] = useState(false);
-  const [isCookiesVisible, setIsCookiesVisible] = useState(true);
+  const [isCookiesVisible, setIsCookiesVisible] = useState(false);
   const popupRef = useRef<HTMLDivElement | null>(null);
   const { language } = useLanguage();
   const [showSuccess, setShowSuccess] = useState(false);
@@ -54,19 +54,44 @@ export default function FooterComponent(props: any) {
     return emailRegex.test(email);
   };
 
+  useEffect(() => {
+    validateForm();
+  }, [language]);
+
   const validateForm = () => {
     const newErrors = {
-      name: form.name.trim() === "" ? "Full Name is required" : "",
+      name:
+        form.name.trim() === ""
+          ? language === "en"
+            ? footerResponse?.enNameError
+            : footerResponse?.frNameError
+          : "",
       email:
         form.email.trim() === ""
-          ? "Email is required"
+          ? language === "en"
+            ? footerResponse?.enEmailError
+            : footerResponse?.frEmailError
           : !validateEmail(form.email)
-          ? "Invalid email"
+          ? language === "en"
+            ? "Invalid Email"
+            : "Invalid Emailfr"
           : "",
-      phone: form.phone.trim() === "" ? "Phone Number is required" : "",
-      comment: form.comment.trim() === "" ? "comment is required" : "",
+      phone:
+        form.phone.trim() === ""
+          ? language === "en"
+            ? footerResponse?.enPhoneError
+            : footerResponse?.frPhoneError
+          : "",
+      comment:
+        form.comment.trim() === ""
+          ? language === "en"
+            ? footerResponse?.enCommentError
+            : footerResponse?.frCommentError
+          : "",
     };
+
     setErrors(newErrors);
+
     return (
       !newErrors.name &&
       !newErrors.email &&

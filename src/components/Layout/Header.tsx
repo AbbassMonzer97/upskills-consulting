@@ -16,7 +16,7 @@ export default function HeaderComponent(props: any) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
+      if (window.scrollY > 200) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -51,8 +51,8 @@ export default function HeaderComponent(props: any) {
   return (
     <>
       <header
-        className={`items-baseline md:flex md:flex-row flex-col justify-between items-center w-full z-[1000] transition-all duration-300 p-[50px] fixed top-0 ${
-          isFixed ? "bg-lightBlue" : "bg-lightBlue"
+        className={`items-baseline md:flex md:flex-row flex-col justify-between items-center w-full z-[1000] transition-all duration-300 p-[50px] ${
+          isFixed ? "fixed top-0 bg-lightBlue" : "bg-lightBlue"
         }`}
       >
         <div className="flex justify-between mb-4 md:mb-0">

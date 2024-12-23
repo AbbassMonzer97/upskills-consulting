@@ -13,7 +13,7 @@ export default function Banner(props: any) {
   const { language } = useLanguage();
   return (
     <>
-      <section className="mb-24" id="banner">
+      <section className="md:mb-0 mb-12" id="banner">
         <div
           className="w-full xl:h-[35rem] md:h-[25rem] h-[19rem] bg-center bg-cover bg-no-repeat grid"
           style={{

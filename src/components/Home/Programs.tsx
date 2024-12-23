@@ -37,9 +37,9 @@ export default function Programs(props: any) {
                   : index === 1
                   ? "border-t-blue"
                   : index === 2
-                  ? "border-t-lightOrange"
+                  ? "border-t-lightOrange right-0"
                   : index === 3
-                  ? "border-t-orange"
+                  ? "border-t-orange right-0"
                   : "border-t-black"
               } border-t-[65px] border-l-[75px] border-r-[75px]`}
             ></div>

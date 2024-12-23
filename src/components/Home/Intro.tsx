@@ -34,15 +34,17 @@ export default function Intro(props: any) {
     <>
       <section
         id="home"
-        className="flex md:flex-row flex-col-reverse items-center bg-white md:py-16 pb-16 px-6 gap-12 md:gap-0"
+        className="flex md:flex-row flex-col-reverse items-center bg-white px-6 md:px-0 gap-12 md:gap-0"
       >
         <div className="flex-1">
           {!isMobile && (
             <Image
               src={handleImgResponse(intro?.desktopImage)}
+              layout="intrinsic"
+              unoptimized
+              alt="bg"
               width={400}
               height={400}
-              alt="bg"
             />
           )}
           {isMobile && (

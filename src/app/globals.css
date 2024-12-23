@@ -306,7 +306,7 @@ h2,
 
 /* services titles */
 .services-titles {
-  @apply font-avMedium text-[16px] leading-[22px] lg:text-[30px] lg:leading-[30px];
+  @apply font-avMedium text-[30px] leading-[30px];
 }
 
 /* programs titles */
