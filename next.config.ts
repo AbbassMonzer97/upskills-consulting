@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_API_URL: process.env.API_URL,
   },
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "13.36.149.122"],
   },
 };
 
