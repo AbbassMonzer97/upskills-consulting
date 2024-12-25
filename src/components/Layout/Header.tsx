@@ -51,7 +51,7 @@ export default function HeaderComponent(props: any) {
   return (
     <>
       <header
-        className={`items-baseline md:flex md:flex-row flex-col justify-between items-center w-full z-[1000] transition-all duration-300 p-[50px] ${
+        className={`items-baseline md:flex md:flex-row flex-col justify-between items-center w-full z-[1000] transition-all duration-300 p-[50px] pt-[25px] md:pb-[30px] pb-[15px] ${
           isFixed ? "fixed top-0 bg-lightBlue" : "bg-lightBlue"
         }`}
       >

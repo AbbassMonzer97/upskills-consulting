@@ -40,9 +40,9 @@ export default function Intro(props: any) {
           {!isMobile && (
             <Image
               src={handleImgResponse(intro?.desktopImage)}
+              alt="bg"
               layout="intrinsic"
               unoptimized
-              alt="bg"
               width={400}
               height={400}
             />

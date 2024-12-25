@@ -54,9 +54,9 @@ export default function FooterComponent(props: any) {
     return emailRegex.test(email);
   };
 
-  useEffect(() => {
-    validateForm();
-  }, [language]);
+  // useEffect(() => {
+  //   validateForm();
+  // }, [language]);
 
   const validateForm = () => {
     const newErrors = {
@@ -377,16 +377,15 @@ export default function FooterComponent(props: any) {
       {isCookiesVisible && (
         <div className="fixed bottom-0 left-0 right-0 bg-white text-black p-4 z-50 flex-col lg:flex-row">
           <div className="container mx-auto flex justify-between items-center md:flex-row flex-col">
-            <p className="bdy-txt-6">
-              This website uses cookies to identify your recurrent visits,
-              location and preferences, to measure the effectiveness of
-              campaigns and to examine traffic. <br />
-              This information allows us to regularly evolve and improve our
-              online services. <br /> By continuing to browse, you give us your
-              consent for the use of cookies.
-            </p>
+            <Markdown cls="bdy-txt-6">
+              {language === "en"
+                ? footerResponse?.enCookiesText
+                : footerResponse?.frCookiesText}
+            </Markdown>
             <button className="btn-primary" onClick={handleAccept}>
-              I Accept
+              {language === "en"
+                ? footerResponse?.enCookiesButton
+                : footerResponse?.frCookiesButton}
             </button>
           </div>
         </div>
@@ -442,10 +441,9 @@ export default function FooterComponent(props: any) {
           </div>
           <div className="text-black mt-8">
             <Markdown cls="bdy-txt-1 text-center">
-              Your request was successfully submitted
-            </Markdown>
-            <Markdown cls="bdy-txt-5 text-center text-black">
-              We will get back to you within 48h
+              {language === "en"
+                ? footerResponse?.enConfirmationPopup
+                : footerResponse?.frConfirmationPopup}
             </Markdown>
           </div>
 

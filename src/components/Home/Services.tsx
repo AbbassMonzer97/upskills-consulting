@@ -42,7 +42,9 @@ export default function Services(props: any) {
               </div>
               <Image
                 src={handleImgResponse(service?.image)}
-                width={100}
+                layout="intrinsic"
+                unoptimized
+                width={200}
                 height={400}
                 alt="bg"
               />
