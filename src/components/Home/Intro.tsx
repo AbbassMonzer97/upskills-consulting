@@ -5,15 +5,16 @@ import Markdown from "@/utils/Markdown";
 import useIsMobile from "@/utils/isMobile";
 import { handleImgResponse } from "@/utils/utility";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { postEmail } from "./intro.data";
 
 export default function Intro(props: any) {
   const { intro } = props;
+  const [showSuccess, setShowSuccess] = useState(false);
   const isMobile = useIsMobile();
   const { language } = useLanguage();
   const [email, setEmail] = useState(""); // State to manage the input value
-
+  const popupRef = useRef<HTMLDivElement | null>(null);
   const handleClearInput = () => {
     setEmail(""); // Clear the input
   };
@@ -22,8 +23,8 @@ export default function Intro(props: any) {
     if (!email) return;
 
     try {
-      await postEmail(email);
-      console.log("Email submitted successfully");
+      const resp = await postEmail(email);
+      setShowSuccess(true);
       handleClearInput();
     } catch (error) {
       console.error("Error sending email:", error);
@@ -32,6 +33,10 @@ export default function Intro(props: any) {
 
   return (
     <>
+      <div
+        id="overlay"
+        className={`${showSuccess ? "overlay z-[1000]" : "hidden"}`}
+      ></div>
       <section
         id="home"
         className="flex md:flex-row flex-col-reverse items-center bg-white px-6 md:px-0 gap-12 md:gap-0"
@@ -100,6 +105,43 @@ export default function Intro(props: any) {
           </div>
         </div>
       </section>
+
+      {showSuccess && (
+        <div
+          ref={popupRef}
+          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[200px] md:w-[25%] w-[90%] bg-white p-8 overflow-y-auto z-[1000] pb-0"
+        >
+          <div className="flex justify-center">
+            <Image
+              src="/assets/icons/check.png"
+              alt="Logo"
+              width={50}
+              height={50}
+            />
+          </div>
+          <div className="text-black mt-8">
+            <Markdown cls="bdy-txt-1 text-center">
+              {language === "en"
+                ? intro?.enConfirmationPopup
+                : intro?.frConfirmationPopup}
+            </Markdown>
+          </div>
+
+          <div className="md:top-[20px] md:mr-[5px] top-[10px] mr-[10px] right-0 absolute">
+            <button
+              className="md:p-[10px] p-0 pt-0"
+              onClick={() => setShowSuccess(false)}
+            >
+              <Image
+                src="/assets/icons/close.svg"
+                alt="Close"
+                width={25}
+                height={20}
+              />
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
