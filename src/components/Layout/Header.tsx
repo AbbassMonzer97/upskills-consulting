@@ -1,18 +1,15 @@
 /* esspannt-disable react-hooks/rules-of-hooks */
 "use client";
 import { useLanguage } from "@/utils/LanguageContext";
+import { handleImgResponse } from "@/utils/utility";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function HeaderComponent(props: any) {
   const { headerResponse } = props;
   const [isMobileMenuHidden, setIsMobileMenuHidden] = useState(true);
   const [isFixed, setIsFixed] = useState(false);
   const [routes] = useState(headerResponse?.headerLinks);
-  const [openMenuId, setOpenMenuId] = useState(null);
-  const toggleMenu = (id: any) => {
-    setOpenMenuId(openMenuId === id ? null : id);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,9 +25,6 @@ export default function HeaderComponent(props: any) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const closeMenu = () => {
-    setOpenMenuId(null);
-  };
 
   const handleScroll = (e: any, targetId: any) => {
     e.preventDefault();
@@ -51,25 +45,25 @@ export default function HeaderComponent(props: any) {
   return (
     <>
       <header
-        className={`items-baseline md:flex md:flex-row flex-col justify-between items-center w-full z-[1000] transition-all duration-300 p-[50px] pt-[25px] md:pb-[30px] pb-[15px] ${
-          isFixed ? "fixed top-0 bg-lightBlue" : "bg-lightBlue"
+        className={`fixed md:flex md:flex-row flex-col justify-between items-center w-full z-[1000] transition-all duration-300 p-[50px] pt-[25px] md:pt-[10px] md:pb-0 pb-[15px] ${
+          isFixed ? "top-0 bg-[#82A4CD]" : "md:bg-transparent bg-[#82A4CD]"
         }`}
       >
-        <div className="flex justify-between mb-4 md:mb-0">
+        <div className="flex justify-between mb-4 md:mb-0 max-md:-ml-[60px] items-center">
           {/* md:fixed top-0 */}
           <div className="logo">
             <Image
-              src="/assets/images/image.png"
-              alt="Laure"
-              width={300}
+              src={handleImgResponse(headerResponse?.desktopLogo)}
+              alt="Logo"
+              width={250}
               height={100}
-              className="md:block hidden"
+              className="md:block hidden xl:w-[445px] md:w-[415px] -ml-[4rem]"
             />
 
             <Image
-              src="/assets/images/image.png"
-              alt="Laure"
-              width={150}
+              src={handleImgResponse(headerResponse?.desktopLogo)}
+              alt="Logo"
+              width={300}
               height={100}
               className="md:hidden block"
             />
@@ -91,10 +85,10 @@ export default function HeaderComponent(props: any) {
         </div>
         <nav
           className={`flex md:flex-row flex-col md:items-center gap-4 md:gap-0 ${
-            isMobileMenuHidden ? "hidden md:flex" : ""
+            isMobileMenuHidden ? "hidden md:flex md:mt-[35px]" : ""
           }`}
         >
-          <div className="flex md:flex-row flex-col md:space-x-16 gap-4 md:gap-0">
+          <div className="flex md:flex-row flex-col md:space-x-16 gap-4 md:gap-0 max-md:ml-[5px]">
             {routes.map((route: any) => (
               <span key={route.id}>
                 <a
@@ -103,7 +97,7 @@ export default function HeaderComponent(props: any) {
                     handleScroll(e, route?.link);
                     setIsMobileMenuHidden(true);
                   }}
-                  className="text-white hover:underline"
+                  className="relative text-white after:block after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full header-txt"
                 >
                   {language === "en" ? route?.enTitle : route?.frTitle}
                 </a>
@@ -112,16 +106,16 @@ export default function HeaderComponent(props: any) {
           </div>
 
           <div
-            className="flex md:ml-[40px] items-center cursor-pointer"
+            className="flex md:ml-[40px] items-center cursor-pointer max-md:ml-[5px]"
             onClick={toggleLanguage}
           >
             <Image
               src="/assets/icons/globe.svg"
-              alt="Laure"
+              alt="globe"
               width={30}
               height={100}
             />
-            <span className="text-white">
+            <span className="text-white header-txt">
               {language === "en" ? "EN" : "FR"}
             </span>
           </div>

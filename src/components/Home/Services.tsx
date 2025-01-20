@@ -12,9 +12,9 @@ export default function Services(props: any) {
   return (
     <>
       <section id="services" className="pb-16 pt-12 bg-white px-6">
-        <h2 className="font-bold text-center mb-12">
+        <div className="bdy-title text-center md:mb-12 mb-6">
           {language === "en" ? services.enTitle : services.frTitle}
-        </h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services?.servicesOverview.map((service: any, index: any) => (
             <div
@@ -34,7 +34,7 @@ export default function Services(props: any) {
                     : ""
                 }`}
               >
-                <div className="services-titles">
+                <div className="service-title">
                   <Markdown>
                     {language === "en" ? service.enTitle : service.frTitle}
                   </Markdown>
@@ -46,10 +46,10 @@ export default function Services(props: any) {
                 unoptimized
                 width={200}
                 height={400}
-                alt="bg"
+                alt="servicesImage"
               />
 
-              <div className="bdy-txt">
+              <div className="bdy-txt whitespace-nowrap">
                 <Markdown>
                   {language === "en" ? service.enText : service.frText}
                 </Markdown>

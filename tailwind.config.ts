@@ -20,10 +20,13 @@ export default {
         grayText: "#BCBCBD",
       },
       fontFamily: {
-        avBlack: ["Avenir-Black", "sans"],
-        avHeavy: ["Avenir-Heavy", "sans"],
-        avMedium: ["Avenir-Regular", "sans"],
-        avRoman: ["Avenir-Roman", "sans"],
+        interphasesBold: ["TT Interphases Pro Trial Bold", "sans"],
+        interphasesRegular: ["TT Interphases Pro Trial Regular", "sans"],
+        witBold: ["whatever it takes bold", "sans"],
+      },
+      textDirection: {
+        rtl: "rtl",
+        ltr: "ltr",
       },
     },
   },

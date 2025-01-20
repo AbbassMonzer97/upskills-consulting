@@ -41,14 +41,14 @@ export default function Intro(props: any) {
         id="home"
         className="flex md:flex-row flex-col-reverse items-center bg-white px-6 md:px-0 gap-12 md:gap-0"
       >
-        <div className="flex-1">
+        <div className="">
           {!isMobile && (
             <Image
               src={handleImgResponse(intro?.desktopImage)}
-              alt="bg"
+              alt="introImage"
               layout="intrinsic"
               unoptimized
-              width={400}
+              width={600}
               height={400}
             />
           )}
@@ -57,23 +57,23 @@ export default function Intro(props: any) {
               src={handleImgResponse(intro?.mobileImage)}
               width={400}
               height={400}
-              alt="bg"
+              alt="introImage"
             />
           )}
         </div>
         <div className="flex-1">
-          <h2 className="font-bold mb-6 text-center">
+          <div className="font-bold mb-6 text-center bdy-title">
             <Markdown>
               {language === "en" ? intro?.enTitle : intro?.frTitle}
             </Markdown>
-          </h2>
+          </div>
           <div className="bdy-txt mb-16 text-center">
             <Markdown>
               {language === "en" ? intro.enText : intro.frText}
             </Markdown>
           </div>
           <div className="flex-col items-center text-center">
-            <div className="bdy-txt-2 text-orange mb-4">
+            <div className="bdy-txt-special text-orange mb-4">
               {language === "en" ? intro.enSubTitle : intro.frSubTitle}
             </div>
             <div className="relative">
@@ -113,8 +113,8 @@ export default function Intro(props: any) {
         >
           <div className="flex justify-center">
             <Image
-              src="/assets/icons/check.png"
-              alt="Logo"
+              src="/assets/icons/check.svg"
+              alt="check"
               width={50}
               height={50}
             />

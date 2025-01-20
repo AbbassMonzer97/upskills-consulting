@@ -8,12 +8,12 @@ export default function Programs(props: any) {
   const { language } = useLanguage();
   return (
     <>
-      <section id="programs" className="pb-16 pt-12 bg-gray">
-        <h2 className="font-bold text-center mb-12">
+      <section id="programs" className="md:pb-16 pt-12 bg-gray">
+        <div className="bdy-title text-center mb-12">
           <Markdown>
             {language === "en" ? programs?.enTitle : programs?.frTitle}
           </Markdown>
-        </h2>
+        </div>
 
         {programs?.programs.map((prog: any, index: any) => (
           <div
@@ -44,16 +44,16 @@ export default function Programs(props: any) {
               } border-t-[65px] border-l-[75px] border-r-[75px]`}
             ></div>
 
-            <p className="text-center programs-titles">
+            <div className="text-center program-title">
               {language === "en" ? prog?.enTitle : prog?.frTitle}
-            </p>
+            </div>
             <div className="text-center bdy-txt md:px-0 px-2.5">
               <Markdown>
                 {language === "en" ? prog?.enText : prog?.frText}
               </Markdown>
             </div>
             <p
-              className={`text-center md:px-0 px-2.5 bdy-txt-2 ${
+              className={`bdy-txt-special text-center md:px-0 px-2.5 bdy-txt-2 ${
                 index === 0
                   ? "text-lightBlue"
                   : index === 1

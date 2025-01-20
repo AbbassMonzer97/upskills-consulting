@@ -7,7 +7,7 @@ import SwiperCore from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Keyboard, Pagination } from "swiper/modules";
+import { Autoplay, Keyboard, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 SwiperCore.use([Pagination, Keyboard]);
 export default function Testimonials(props: any) {
@@ -17,11 +17,11 @@ export default function Testimonials(props: any) {
   return (
     <>
       <section id="testimonials" className="pb-16 pt-12 px-6 bg-white">
-        <h2 className="font-bold text-center mb-12">
+        <div className="bdy-title text-center mb-12">
           <Markdown>
             {language === "en" ? testimonials?.enTitle : testimonials?.frTitle}
           </Markdown>
-        </h2>
+        </div>
         <div className="space-x-6 lg:flex hidden">
           {testimonials?.clientTestimonials.map((client: any, index: any) => (
             <div
@@ -36,12 +36,12 @@ export default function Testimonials(props: any) {
               }  p-[10px] rounded-[3px] text-center flex-1 my-0`}
               key={client.id}
             >
-              <div className="border border-white p-[50px] h-[350px]">
-                <Markdown cls="programs-titles mb-16 text-white">
+              <div className="border border-white pt-[50px] h-[350px]">
+                <Markdown cls="testimonial-title mb-16 text-white">
                   {language === "en" ? client?.enTitle : client?.frTitle}
                 </Markdown>
 
-                <div className="bdy-txt-sm text-white">
+                <div className="bdy-txt" style={{ color: "white" }}>
                   {language === "en" ? client?.enText : client?.frText}
                 </div>
               </div>
@@ -51,7 +51,7 @@ export default function Testimonials(props: any) {
 
         <div className="lg:hidden block">
           <Swiper
-            spaceBetween={1}
+            spaceBetween={50}
             slidesPerView={1}
             slidesPerGroup={1}
             pagination={{
@@ -62,7 +62,11 @@ export default function Testimonials(props: any) {
               bulletClass: "swiper-pagination-bullet",
               bulletActiveClass: "swiper-pagination-bullet-active",
             }}
-            modules={[Pagination]}
+            modules={[Autoplay, Pagination]}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
             loop={true}
             keyboard={{
               enabled: true,
@@ -83,12 +87,12 @@ export default function Testimonials(props: any) {
                   }  p-[10px] rounded-[3px] text-center flex-1`}
                   key={client.id}
                 >
-                  <div className="border border-white p-[50px] h-[350px]">
-                    <Markdown cls="programs-titles mb-16 text-white">
+                  <div className="border border-white pt-[50px] h-[350px]">
+                    <Markdown cls="testimonial-title mb-8 text-white">
                       {language === "en" ? client?.enTitle : client?.frTitle}
                     </Markdown>
 
-                    <div className="bdy-txt-sm text-white">
+                    <div className="bdy-txt" style={{ color: "white" }}>
                       {language === "en" ? client?.enText : client?.frText}
                     </div>
                   </div>

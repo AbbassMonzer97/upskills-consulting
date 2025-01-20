@@ -54,10 +54,6 @@ export default function FooterComponent(props: any) {
     return emailRegex.test(email);
   };
 
-  // useEffect(() => {
-  //   validateForm();
-  // }, [language]);
-
   const validateForm = () => {
     const newErrors = {
       name:
@@ -144,23 +140,6 @@ export default function FooterComponent(props: any) {
       }
     }
 
-    // if (name === "phone") {
-    //   const regex = /^[+0-9]/;
-
-    //   if (!regex.test(value)) {
-    //     setErrors((prevErrors: any) => ({
-    //       ...prevErrors,
-    //       phone: "Phone number can only contain digits",
-    //     }));
-    //     return;
-    //   } else {
-    //     setErrors((prevErrors: any) => ({
-    //       ...prevErrors,
-    //       phone: "",
-    //     }));
-    //   }
-    // }
-
     setForm((prevForm: any) => ({ ...prevForm, [name]: value }));
     setErrors((prevErrors: any) => ({ ...prevErrors, [name]: "" }));
   };
@@ -192,41 +171,38 @@ export default function FooterComponent(props: any) {
           showPrivacy || showSuccess ? "overlay z-[1000]" : "hidden"
         }`}
       ></div>
-      <footer className="bg-gray text-grayText py-6 text-center bdy-txt">
-        <h2 className="font-bold text-center mb-6 text-black">
+      <footer className="bg-gray text-grayText pb-16 pt-12 px-6 text-center bdy-txt">
+        <div className="bdy-title text-center mb-6 text-black">
           <Markdown>
             {language === "en"
               ? footerResponse?.enTitle
               : footerResponse?.frTitle}
           </Markdown>
-        </h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <section className="md:py-16 px-6 mt-8 order-1">
             <div className="flex flex-col items-center gap-4">
               <Image
                 src={handleImgResponse(footerResponse?.desktopLogo)}
-                width={300}
+                width={340}
                 height={400}
-                alt="bg"
+                alt="logo"
               />
 
               <Link
                 href={`mailto:${footerResponse?.email}`}
-                className="hover:underline"
+                className="hover:underline footer-txt"
               >
                 {footerResponse?.email}
               </Link>
             </div>
           </section>
-          <section
-            id="footer"
-            className="md:py-16 pb-12 px-6 md:order-2 order-3"
-          >
+          <section id="footer" className="md:py-16 pb-8 md:px-6 order-2">
             <form
               className="flex flex-col space-y-4 max-w-lg mx-auto mt-6"
               onSubmit={handleSubmit}
             >
-              <p className="text-left">
+              <p className="text-left footer-txt">
                 {language === "en"
                   ? footerResponse?.form?.enTitle
                   : footerResponse?.form?.frTitle}
@@ -241,7 +217,7 @@ export default function FooterComponent(props: any) {
                     ? footerResponse?.form?.enName
                     : footerResponse?.form?.frName
                 }
-                className={` p-3 w-full border ${
+                className={`custom-input p-3 w-full border ${
                   errors.name ? "border-red-300" : ""
                 }`}
               />
@@ -262,7 +238,7 @@ export default function FooterComponent(props: any) {
                     ? footerResponse?.form?.enEmail
                     : footerResponse?.form?.frEmail
                 }
-                className={` p-3 w-full border ${
+                className={`custom-input p-3 w-full border ${
                   errors.email ? "border-red-300" : ""
                 }`}
               />
@@ -283,7 +259,7 @@ export default function FooterComponent(props: any) {
                     ? footerResponse?.form?.enPhone
                     : footerResponse?.form?.frPhone
                 }
-                className={` p-3 w-full border ${
+                className={`custom-input p-3 w-full border ${
                   errors.phone ? "border-red-300" : ""
                 }`}
               />
@@ -304,7 +280,7 @@ export default function FooterComponent(props: any) {
                     : footerResponse?.form?.frComment
                 }
                 rows={4}
-                className={` p-3 w-full border max-h-[500px] overflow-auto resize-y ${
+                className={`custom-input p-3 w-full border max-h-[500px] overflow-auto resize-y ${
                   errors.comment ? "border-red-300" : ""
                 }`}
               />
@@ -315,33 +291,59 @@ export default function FooterComponent(props: any) {
                   </p>
                 </div>
               )}
-              <button type="submit" className="btn-primary">
+              <button type="submit" className="btn-primary bg-lightOrange">
                 {language === "en"
                   ? footerResponse?.form?.enSubmit
                   : footerResponse?.form?.frSubmit}
               </button>
             </form>
           </section>
-          <section className="md:py-16 px-6 mt-8 md:order-3 order-2">
+          <section className="md:py-16 px-6 md:mt-8 max-md:mb-8 order-3">
             <div className="flex flex-col items-center gap-8">
-              <div>
+              <div className="footer-txt md:-ml-12">
                 <Markdown>
                   {language === "en"
                     ? footerResponse?.socialMedia?.enTitle
                     : footerResponse?.socialMedia?.frTitle}
                 </Markdown>
               </div>
-              {footerResponse?.socialMedia?.SocialMedia.map((media: any) => (
-                <div className="flex items-center" key={media.id}>
-                  <Image
-                    src={handleImgResponse(media?.icon)}
-                    width={50}
-                    height={400}
-                    alt="bg"
-                  />
-                  <p>{media?.text}</p>
-                </div>
-              ))}
+              <div className="max-md:flex max-md:flex-row max-md:items-center">
+                {footerResponse?.socialMedia?.SocialMedia.map(
+                  (media: any, index: number) => {
+                    const isWhatsApp = index === 1; // Check if the current index is 1
+                    const whatsappLink = `https://wa.me/${media?.link}`;
+
+                    return (
+                      <div className="" key={media.id}>
+                        <Link
+                          href={isWhatsApp ? whatsappLink : media?.link || ""}
+                          target="_blank"
+                          className="cursor-pointer"
+                        >
+                          <div className="flex items-center">
+                            <Image
+                              src={handleImgResponse(media?.icon)}
+                              width={index === 0 ? 60 : index === 1 ? 70 : 60}
+                              height={400}
+                              alt="socialMediaIcon"
+                              className={`${
+                                index === 0
+                                  ? "max-md:mt-[-8px] md:ml-[10px]"
+                                  : index === 2
+                                  ? "max-md:mt-[-4px]"
+                                  : ""
+                              }`}
+                            />
+                            <p className="footer-txt max-md:hidden">
+                              {media?.text}
+                            </p>
+                          </div>
+                        </Link>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
             </div>
           </section>
         </div>
@@ -382,7 +384,10 @@ export default function FooterComponent(props: any) {
                 ? footerResponse?.enCookiesText
                 : footerResponse?.frCookiesText}
             </Markdown>
-            <button className="btn-primary" onClick={handleAccept}>
+            <button
+              className="btn-primary bg-lightOrange"
+              onClick={handleAccept}
+            >
               {language === "en"
                 ? footerResponse?.enCookiesButton
                 : footerResponse?.frCookiesButton}
@@ -433,8 +438,8 @@ export default function FooterComponent(props: any) {
         >
           <div className="flex justify-center">
             <Image
-              src="/assets/icons/check.png"
-              alt="Logo"
+              src="/assets/icons/check.svg"
+              alt="check"
               width={50}
               height={50}
             />
