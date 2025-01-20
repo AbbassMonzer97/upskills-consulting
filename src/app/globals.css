@@ -190,3 +190,15 @@ input::-webkit-inner-spin-button {
 .triangle {
   @apply w-0 h-0 border-l-transparent border-r-transparent absolute top-0;
 }
+
+@media only screen and (device-width: 430px) and (device-height: 932px) {
+  .banner-mobile-image {
+    width: 500px;
+  }
+  .header-logo {
+    margin-left: -35px !important;
+  }
+  .menu {
+    margin-left: 20px;
+  }
+}

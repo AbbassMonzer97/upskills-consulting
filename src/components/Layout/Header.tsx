@@ -49,7 +49,7 @@ export default function HeaderComponent(props: any) {
           isFixed ? "top-0 bg-[#82A4CD]" : "md:bg-transparent bg-[#82A4CD]"
         }`}
       >
-        <div className="flex justify-between mb-4 md:mb-0 max-md:-ml-[60px] items-center">
+        <div className="flex justify-between mb-4 md:mb-0 max-md:-ml-[60px] items-center header-logo">
           {/* md:fixed top-0 */}
           <div className="logo">
             <Image
@@ -84,7 +84,7 @@ export default function HeaderComponent(props: any) {
           </div>
         </div>
         <nav
-          className={`flex md:flex-row flex-col md:items-center gap-4 md:gap-0 ${
+          className={`flex md:flex-row flex-col md:items-center gap-4 md:gap-0 menu ${
             isMobileMenuHidden ? "hidden md:flex md:mt-[35px]" : ""
           }`}
         >

@@ -108,6 +108,7 @@ export default function Banner(props: any) {
               width={400}
               height={400}
               alt="bannerImage"
+              className="banner-mobile-image"
             />
           </div>
         )}
