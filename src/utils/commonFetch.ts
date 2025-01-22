@@ -1,4 +1,3 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 export const get = async (path: string, params: string = "") => {
   const requestOptions = {
     method: "GET",

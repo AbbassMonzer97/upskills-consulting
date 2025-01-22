@@ -1,13 +1,6 @@
 "use server";
 import { cookies } from "next/headers";
 import { flattenAttributes } from "./utility";
-
-// Set NODE_TLS_REJECT_UNAUTHORIZED in a server-side context
-// if (typeof window === "undefined" && process.env.NODE_ENV !== "production") {
-//   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-// }
-
-// Define types for the function parameters and return type
 interface FetchOptions extends RequestInit {
   body?: BodyInit | null;
 }
