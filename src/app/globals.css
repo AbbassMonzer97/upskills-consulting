@@ -179,7 +179,7 @@
     width: 500px;
   }
   .header-logo {
-    margin-left: -35px !important;
+    padding-left: 25px;
   }
   .menu {
     margin-left: 20px;
