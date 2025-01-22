@@ -307,7 +307,7 @@ export default function FooterComponent(props: any) {
                     : footerResponse?.socialMedia?.frTitle}
                 </Markdown>
               </div>
-              <div className="max-md:flex max-md:flex-row max-md:items-center">
+              <div className="flex md:flex-col max-md:flex-row items-center">
                 {footerResponse?.socialMedia?.SocialMedia.map(
                   (media: any, index: number) => {
                     const isWhatsApp = index === 1; // Check if the current index is 1
@@ -334,7 +334,7 @@ export default function FooterComponent(props: any) {
                                   : ""
                               }`}
                             />
-                            <p className="footer-txt max-md:hidden">
+                            <p className="footer-txt max-md:hidden hover:underline">
                               {media?.text}
                             </p>
                           </div>
@@ -354,14 +354,17 @@ export default function FooterComponent(props: any) {
             : footerResponse?.frRights}
         </p>
         <div className="flex justify-center md:gap-[4rem] md:flex-row flex-col gap-[1rem]">
-          <p onClick={() => setPrivacy(true)} className="cursor-pointer">
+          <p
+            onClick={() => setPrivacy(true)}
+            className="cursor-pointer hover:underline"
+          >
             {language === "en"
               ? footerResponse?.enPrivacyPolicy
               : footerResponse?.frPrivacyPolicy}
           </p>
           <p
             onClick={() => setIsCookiesVisible(true)}
-            className="cursor-pointer"
+            className="cursor-pointer hover:underline"
           >
             {language === "en"
               ? footerResponse?.enCookies

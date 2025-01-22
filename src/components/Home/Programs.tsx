@@ -8,7 +8,7 @@ export default function Programs(props: any) {
   const { language } = useLanguage();
   return (
     <>
-      <section id="programs" className="md:pb-16 pt-12 bg-gray">
+      <section className="md:pb-16 pt-12 bg-gray">
         <div className="bdy-title text-center mb-12">
           <Markdown>
             {language === "en" ? programs?.enTitle : programs?.frTitle}
@@ -21,25 +21,34 @@ export default function Programs(props: any) {
               index === 0
                 ? "border-t-lightBlue"
                 : index === 1
-                ? "border-t-blue"
+                ? "border-t-lightBlue"
                 : index === 2
                 ? "border-t-lightOrange"
                 : index === 3
-                ? "border-t-orange"
+                ? "border-t-lightOrange"
+                : index === 4
+                ? "border-t-blue"
+                : index === 5
+                ? "border-t-blue"
                 : "border-t-black"
             } border-t-2 md:py-12 py-20`}
             key={prog.id}
+            id={prog?.sectionID}
           >
             <div
               className={`triangle ${
                 index === 0
                   ? "border-t-lightBlue"
                   : index === 1
-                  ? "border-t-blue"
+                  ? "border-t-lightBlue right-0"
                   : index === 2
-                  ? "border-t-lightOrange right-0"
+                  ? "border-t-lightOrange"
                   : index === 3
-                  ? "border-t-orange right-0"
+                  ? "border-t-lightOrange right-0"
+                  : index === 4
+                  ? "border-t-blue"
+                  : index === 5
+                  ? "border-t-blue right-0"
                   : "border-t-black"
               } border-t-[65px] border-l-[75px] border-r-[75px]`}
             ></div>
@@ -57,11 +66,15 @@ export default function Programs(props: any) {
                 index === 0
                   ? "text-lightBlue"
                   : index === 1
-                  ? "text-blue"
+                  ? "text-lightBlue"
                   : index === 2
                   ? "text-lightOrange"
                   : index === 3
-                  ? "text-orange"
+                  ? "text-lightOrange"
+                  : index === 4
+                  ? "text-blue"
+                  : index === 5
+                  ? "text-blue"
                   : "text-black"
               }`}
             >

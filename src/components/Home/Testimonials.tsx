@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/utils/LanguageContext";
 import Markdown from "@/utils/Markdown";
+import { useIntersectionObserver } from "@/utils/useIntersectionObserver";
 import { useState } from "react";
 import SwiperCore from "swiper";
 import "swiper/css";
@@ -14,9 +15,16 @@ export default function Testimonials(props: any) {
   const [, setSwiper] = useState<any>();
   const { testimonials } = props;
   const { language } = useLanguage();
+  const { elementRef, isVisible } = useIntersectionObserver(0.2);
   return (
     <>
-      <section id="testimonials" className="pb-16 pt-12 px-6 bg-white">
+      <section
+        id="testimonials"
+        ref={elementRef}
+        className={`pb-16 pt-12 px-6 bg-white ${
+          isVisible ? "fade-in visible" : "fade-in"
+        }`}
+      >
         <div className="bdy-title text-center mb-12">
           <Markdown>
             {language === "en" ? testimonials?.enTitle : testimonials?.frTitle}

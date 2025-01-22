@@ -16,14 +16,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-// module.exports = {
-//   webpackDevMiddleware: (config) => {
-//     if (process.env.NODE_ENV !== 'development') {
-//       config.watchOptions = {
-//         ignored: /.*/,
-//       };
-//     }
-//     return config;
-//   },
-// };

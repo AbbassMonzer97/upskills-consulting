@@ -11,18 +11,22 @@ export default function Banner(props: any) {
   const { banner } = props;
   const isMobile = useIsMobile();
   const { language } = useLanguage();
-  const handleScroll = (e: any, targetId: any) => {
-    e.preventDefault();
-    const targetElement = document.querySelector(targetId);
+  const handleScroll = (e: React.MouseEvent, targetId: string) => {
+    e.preventDefault(); // Prevent default anchor behavior
 
-    if (targetElement) {
-      const offset = 80; // Adjust for fixed header height
-      const elementPosition = targetElement.offsetTop - offset;
+    if (targetId) {
+      const targetElement = document.querySelector(targetId); // Find the target element
 
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth", // Enables smooth scrolling
-      });
+      if (targetElement) {
+        const offset = 100; // Adjust this value to control the threshold
+        const elementPosition =
+          targetElement.getBoundingClientRect().top + window.scrollY - offset;
+
+        window.scrollTo({
+          top: elementPosition,
+          behavior: "smooth", // Enable smooth scrolling
+        });
+      }
     }
   };
   return (
@@ -57,7 +61,7 @@ export default function Banner(props: any) {
               ))}
             </div>
           </div>
-          <div className="hidden md:block absolute right-0 bottom-0 ">
+          <div className="hidden md:block absolute right-0 bottom-0">
             <Image
               src={handleImgResponse(banner?.desktopImage)}
               width={800}
@@ -65,7 +69,7 @@ export default function Banner(props: any) {
               alt="bannerImage"
             />
           </div>
-          <div className="md:ml-[4rem] md:mt-[12rem] mt-[9rem] my-auto mx-auto md:col-span-8 p-[35px] md:p-0 md:bg-transparent">
+          <div className="md:ml-[4rem] md:mt-[12rem] mt-[10rem] my-auto mx-auto md:col-span-8 p-[35px] md:p-0 md:bg-transparent">
             <div className="font-bold text-white banner-title">
               <Markdown>
                 {language === "en" ? banner?.enTitle : banner?.frTitle}

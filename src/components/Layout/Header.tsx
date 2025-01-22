@@ -13,7 +13,7 @@ export default function HeaderComponent(props: any) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 150) {
         setIsFixed(true);
       } else {
         setIsFixed(false);

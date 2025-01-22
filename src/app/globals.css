@@ -202,3 +202,17 @@ input::-webkit-inner-spin-button {
     margin-left: 20px;
   }
 }
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(50px) scale(0.9) rotateX(10deg);
+  filter: blur(10px);
+  transition: opacity 0.8s ease-out,
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotateX(0);
+  filter: blur(0);
+}
