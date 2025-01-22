@@ -133,30 +133,13 @@
   z-index: 2;
 }
 
-.text-content .name-bold {
-  font-weight: bold;
-  color: black;
-}
-
-.text-content .name-colored {
-  font-weight: bold;
-  color: #2178bd;
-}
-
 .image-content {
   text-align: center;
   z-index: 2;
 }
 
 .image-content img {
-  height: auto;
   border-radius: 5px;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 /* swiper style */

@@ -39,20 +39,6 @@ export async function fetchData(
     };
   }
 
-  // Add Authorization header if auth is enabled
-  if (enableAuth) {
-    const jwt = (await cookies()).get("jwt")?.value;
-    if (jwt) {
-      finalOptions.headers = {
-        ...finalOptions.headers,
-        Authorization: `Bearer ${jwt}`,
-      };
-      finalOptions.credentials = "include";
-    } else {
-      console.warn("NOT USING JWT. Authentication might fail.");
-    }
-  }
-
   try {
     console.log(url);
     const response = await fetch(url, finalOptions);
