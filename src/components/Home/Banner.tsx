@@ -20,9 +20,9 @@ export default function Banner(props: any) {
       if (targetElement) {
         const offset = 100; // Adjust this value to control the threshold
         const elementPosition =
-          targetElement.getBoundingClientRect().top + window.scrollY - offset;
+          targetElement.getBoundingClientRect().top + window?.scrollY - offset;
 
-        window.scrollTo({
+        window?.scrollTo({
           top: elementPosition,
           behavior: "smooth", // Enable smooth scrolling
         });

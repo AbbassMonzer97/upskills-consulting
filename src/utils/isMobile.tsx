@@ -6,17 +6,17 @@ const useIsMobile = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Tailwind's 'md' breakpoint
+      setIsMobile(window?.innerWidth < 768); // Tailwind's 'md' breakpoint
     };
 
     // Initial check (only after the component is mounted)
     handleResize();
 
     // Add event listener for resize
-    window.addEventListener("resize", handleResize);
+    window?.addEventListener("resize", handleResize);
 
     // Cleanup the event listener
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window?.removeEventListener("resize", handleResize);
   }, []);
 
   return isMobile;

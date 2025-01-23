@@ -13,16 +13,16 @@ export default function HeaderComponent(props: any) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 150) {
+      if (window?.scrollY > 150) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window?.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window?.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -34,7 +34,7 @@ export default function HeaderComponent(props: any) {
       const offset = 80; // Adjust for fixed header height
       const elementPosition = targetElement.offsetTop - offset;
 
-      window.scrollTo({
+      window?.scrollTo({
         top: elementPosition,
         behavior: "smooth", // Enables smooth scrolling
       });
