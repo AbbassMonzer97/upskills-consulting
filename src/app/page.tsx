@@ -6,7 +6,7 @@ import Services from "@/components/Home/Services";
 import Testimonials from "@/components/Home/Testimonials";
 import { getHomeData } from "./home.data";
 import SuppressErrorsWrapper from "@/utils/SuppressErrorsWrapper";
-
+export const revalidate = 10;
 export default async function Home() {
   const response = await getHomeData();
 
