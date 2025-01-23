@@ -262,7 +262,7 @@ export default function FooterComponent(props: any) {
               </button>
             </div>
           </section>
-          <section className="md:py-16 px-6 md:mt-8 max-md:mb-8 order-3">
+          <section className="md:py-16 px-6 md:mt-[28px] max-md:mb-8 order-3">
             <div className="flex flex-col items-center gap-8">
               <div className="footer-txt md:-ml-12">
                 <Markdown>
@@ -312,7 +312,7 @@ export default function FooterComponent(props: any) {
           </section>
         </div>
 
-        <p className="mb-4">
+        <p className="mb-4 footer-txt">
           {language === "en"
             ? footerResponse?.enRights
             : footerResponse?.frRights}
@@ -320,7 +320,7 @@ export default function FooterComponent(props: any) {
         <div className="flex justify-center md:gap-[4rem] md:flex-row flex-col gap-[1rem]">
           <p
             onClick={() => setPrivacy(true)}
-            className="cursor-pointer hover:underline"
+            className="cursor-pointer hover:underline footer-txt"
           >
             {language === "en"
               ? footerResponse?.enPrivacyPolicy
@@ -328,7 +328,7 @@ export default function FooterComponent(props: any) {
           </p>
           <p
             onClick={() => setIsCookiesVisible(true)}
-            className="cursor-pointer hover:underline"
+            className="cursor-pointer hover:underline footer-txt"
           >
             {language === "en"
               ? footerResponse?.enCookies
@@ -336,7 +336,7 @@ export default function FooterComponent(props: any) {
           </p>
           <Link
             href={`mailto:${footerResponse?.email}`}
-            className="hover:underline"
+            className="hover:underline footer-txt"
           >
             {footerResponse?.email}
           </Link>

@@ -33,7 +33,7 @@ export default function Banner(props: any) {
     <>
       <section className="md:mb-0 mb-12" id="banner">
         <div className="w-full 2xl:h-[48rem] md:h-[52rem] h-[44rem] grid relative bg-[url('/assets/images/banner.png')] bg-center bg-no-repeat">
-          <div className="absolute bottom-[-60px] right-[50rem]">
+          <div className="absolute bottom-[-57px] right-[50rem]">
             <div className="bg-[#dbdbdb] p-4 flex flex-col items-center pt-[5px] pb-[20px] md:w-[350px] w-[280px] md:mt-10 mt-4 max-md:hidden">
               {banner?.button.map((button: any, index: number) => (
                 <div className="" key={index}>
