@@ -6,6 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { postFooterForm } from "./footer.data";
+import { EmailInput } from "../FooterInput/EmailInput";
+import { PhoneInput } from "../FooterInput/PhoneInput";
+import { TextInput } from "../FooterInput/TextInput";
+import { TextareaInput } from "../FooterInput/TextareaInput";
 
 export default function FooterComponent(props: any) {
   const { footerResponse } = props;
@@ -198,17 +202,13 @@ export default function FooterComponent(props: any) {
             </div>
           </section>
           <section id="footer" className="md:py-16 pb-8 md:px-6 order-2">
-            <form
-              className="flex flex-col space-y-4 max-w-lg mx-auto mt-6"
-              onSubmit={handleSubmit}
-            >
+            <div className="flex flex-col space-y-4 max-w-lg mx-auto mt-6">
               <p className="text-left footer-txt">
                 {language === "en"
                   ? footerResponse?.form?.enTitle
                   : footerResponse?.form?.frTitle}
               </p>
-              <input
-                type="text"
+              <TextInput
                 name="name"
                 value={form.name}
                 onChange={handleChange}
@@ -217,19 +217,9 @@ export default function FooterComponent(props: any) {
                     ? footerResponse?.form?.enName
                     : footerResponse?.form?.frName
                 }
-                className={`custom-input p-3 w-full border ${
-                  errors.name ? "border-red-300" : ""
-                }`}
+                error={errors.name}
               />
-              {errors.name && (
-                <div>
-                  <p className="text-red-300 text-left text-sm -mt-[10px]">
-                    {errors.name}
-                  </p>
-                </div>
-              )}
-              <input
-                type="email"
+              <EmailInput
                 name="email"
                 value={form.email}
                 onChange={handleChange}
@@ -238,19 +228,9 @@ export default function FooterComponent(props: any) {
                     ? footerResponse?.form?.enEmail
                     : footerResponse?.form?.frEmail
                 }
-                className={`custom-input p-3 w-full border ${
-                  errors.email ? "border-red-300" : ""
-                }`}
+                error={errors.email}
               />
-              {errors.email && (
-                <div>
-                  <p className="text-red-300 text-left text-sm -mt-[10px]">
-                    {errors.email}
-                  </p>
-                </div>
-              )}
-              <input
-                type="number"
+              <PhoneInput
                 name="phone"
                 value={form.phone}
                 onChange={handleChange}
@@ -259,18 +239,9 @@ export default function FooterComponent(props: any) {
                     ? footerResponse?.form?.enPhone
                     : footerResponse?.form?.frPhone
                 }
-                className={`custom-input p-3 w-full border ${
-                  errors.phone ? "border-red-300" : ""
-                }`}
+                error={errors.phone}
               />
-              {errors.phone && (
-                <div>
-                  <p className="text-red-300 text-left text-sm -mt-[10px]">
-                    {errors.phone}
-                  </p>
-                </div>
-              )}
-              <textarea
+              <TextareaInput
                 name="comment"
                 value={form.comment}
                 onChange={handleChange}
@@ -279,24 +250,17 @@ export default function FooterComponent(props: any) {
                     ? footerResponse?.form?.enComment
                     : footerResponse?.form?.frComment
                 }
-                rows={4}
-                className={`custom-input p-3 w-full border max-h-[500px] overflow-auto resize-y ${
-                  errors.comment ? "border-red-300" : ""
-                }`}
+                error={errors.comment}
               />
-              {errors.comment && (
-                <div>
-                  <p className="text-red-300 text-left text-sm -mt-[10px]">
-                    {errors.comment}
-                  </p>
-                </div>
-              )}
-              <button type="submit" className="btn-primary bg-lightOrange">
+              <button
+                className="btn-primary bg-lightOrange"
+                onClick={handleSubmit}
+              >
                 {language === "en"
                   ? footerResponse?.form?.enSubmit
                   : footerResponse?.form?.frSubmit}
               </button>
-            </form>
+            </div>
           </section>
           <section className="md:py-16 px-6 md:mt-8 max-md:mb-8 order-3">
             <div className="flex flex-col items-center gap-8">

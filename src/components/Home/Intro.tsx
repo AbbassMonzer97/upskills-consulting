@@ -7,6 +7,7 @@ import { handleImgResponse } from "@/utils/utility";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { postEmail } from "./intro.data";
+import InputComp from "../Input/InputComp";
 
 export default function Intro(props: any) {
   const { intro } = props;
@@ -31,6 +32,12 @@ export default function Intro(props: any) {
     }
   };
 
+  const handleChangeInput = (e: any) => {
+    setEmail(e?.target?.value);
+  };
+
+  const plc = language === "en" ? intro.enEmail : intro.frEmail;
+
   return (
     <>
       <div
@@ -47,7 +54,6 @@ export default function Intro(props: any) {
               src={handleImgResponse(intro?.desktopImage)}
               alt="introImage"
               layout="intrinsic"
-              unoptimized
               width={600}
               height={400}
             />
@@ -77,11 +83,21 @@ export default function Intro(props: any) {
               {language === "en" ? intro.enSubTitle : intro.frSubTitle}
             </div>
             <div className="relative">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={language === "en" ? intro.enEmail : intro.frEmail}
+              <InputComp
+                plc={plc}
+                onChange={handleChangeInput}
+                onKeyDown={(e: any) => {
+                  if (e.key === "Enter") {
+                    handleEmailSubmit();
+                    handleClearInput();
+                  }
+                }}
+              />
+              {/* <input
+                type="text"
+                defaultValue={email}
+                onChange={handleChangeInput}
+                placeholder={plc}
                 className="p-3 border rounded-l md:w-[50%] w-full border-[#A5A5A5]"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
@@ -89,7 +105,8 @@ export default function Intro(props: any) {
                     handleClearInput();
                   }
                 }}
-              />
+              /> */}
+
               <Image
                 src="/assets/icons/arrow-right.svg"
                 alt="Arrow"
