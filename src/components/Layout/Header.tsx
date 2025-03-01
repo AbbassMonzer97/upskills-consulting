@@ -116,7 +116,7 @@ export default function HeaderComponent(props: any) {
               height={100}
             />
             <span className="text-white header-txt">
-              {language === "en" ? "EN" : "FR"}
+              {language === "en" ? "FR" : "EN"}
             </span>
           </div>
         </nav>

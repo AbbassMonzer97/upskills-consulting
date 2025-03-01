@@ -13,7 +13,9 @@ export default function Services(props: any) {
     <>
       <section id="services" className="pb-16 pt-12 bg-white px-6">
         <div className="bdy-title text-center md:mb-12 mb-6">
-          {language === "en" ? services.enTitle : services.frTitle}
+          <Markdown>
+            {language === "en" ? services.enTitle : services.frTitle}
+          </Markdown>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services?.servicesOverview.map((service: any, index: any) => (

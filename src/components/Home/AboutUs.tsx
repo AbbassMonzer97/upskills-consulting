@@ -40,15 +40,17 @@ export default function AboutUs(props: any) {
           >
             {/* Card Content */}
             <div
-              className={`card-content md:grid z-10 max-md:p-[20px] ${
-                index == 1 ? "rtl-direc 2xl:-ml-[5rem]" : "2xl:ml-[18rem]"
+              className={`card-content z-10 max-md:p-[20px] ${
+                index == 1
+                  ? "md:flex md:flex-row-reverse lg:-ml-[5rem] xl:mr-[24rem] 2xl:mr-[27rem]"
+                  : "md:grid 2xl:ml-[18rem]"
               }`}
             >
               <div
                 className={`text-content max-md:p-0 max-md:text-center ${
                   index == 1
-                    ? "text-end lg:ml-[5rem] 2xl:ml-[15rem]"
-                    : "2xl:ml-[15rem] lg:ml-[22rem]"
+                    ? "text-left lg:ml-[5rem] 2xl:ml-[16.5rem]"
+                    : "2xl:ml-[15rem] xl:ml-[22rem]"
                 }`}
               >
                 <div className="bdy-txt-sm md:text-[#A5A5A5]">

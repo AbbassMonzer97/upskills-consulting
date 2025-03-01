@@ -287,7 +287,7 @@ export default function FooterComponent(props: any) {
                           <div className="flex items-center">
                             <Image
                               src={handleImgResponse(media?.icon)}
-                              width={index === 0 ? 60 : index === 1 ? 70 : 60}
+                              width={index === 0 ? 60 : index === 1 ? 70 : 65}
                               height={400}
                               alt="socialMediaIcon"
                               className={`${
